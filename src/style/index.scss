@@ -1,0 +1,74 @@
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (
+    'primary': (
+      'base': #333,
+    ),
+    'info': (
+      'base':  #007AFF,
+    )
+  ),
+);
+@use "element-plus/theme-chalk/src/index.scss" as *;
+@import './iconfont.css';
+.dialog{
+  max-width: calc(100% - .32rem);
+  .el-dialog__body{
+    padding-bottom: 0;
+  }
+  .el-dialog__header{
+    padding: 0;
+  }
+  .el-dialog__body{
+    padding-top: .4rem;
+    @media screen and (max-width: 900px) {
+      padding-top: .76rem;
+    }
+  }
+  .el-dialog__footer{
+    padding-top: 0;
+  }
+}
+.sign_dialog{
+  border-radius: 0.08rem;
+  max-width: calc(100% - .32rem);
+  .el-dialog__footer{
+    padding-bottom: 0.47rem;
+    padding-top: 0;
+  }
+  .el-dialog__body{
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 3.03rem;
+    overflow: hidden;
+    @media screen and (max-width: 900px) {
+      height: 3.88rem;
+    }
+    .share_content{
+      margin: 0.33rem auto 0;
+      width: 2.01rem;
+      padding-bottom: .63rem;
+      .share_img{
+        width: 100%;
+      }
+      @media screen and (max-width: 900px) {
+        margin: 0.36rem auto 0;
+        width: 3.44rem;
+      }
+    }
+    @media screen and (max-width: 900px) {
+      padding-left: .32rem;
+      padding-right: .25rem;
+    }
+  }
+  .el-dialog__header{
+    margin-right: 0;
+    position: relative;
+    padding-top: .43rem;
+    padding-bottom: 0;
+    line-height: 0.34rem;
+    @media screen and (max-width: 900px) {
+      padding-top: .91rem;
+      line-height: 0.57rem;
+    }
+  }
+}

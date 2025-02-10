@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "DMSans-Bold";
+  /* Project id  */
+  src: url('./DMSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "DMSans";
+  /* Project id  */
+  src: url('./DMSans-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "DMSans-Regular";
+  /* Project id  */
+  src: url('./DMSans-Regular.ttf') format('truetype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
