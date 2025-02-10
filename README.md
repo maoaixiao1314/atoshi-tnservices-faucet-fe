@@ -1,16 +1,10 @@
-<p align="center">
-  <a href="https://treasurenet.io">
-    <img alt="treasurenetLogo" src="https://raw.githubusercontent.com/treasurenetprotocol/docs/feature/1.0.3/static/img/logo_tn_github.png" width="250" />
-  </a>
-</p>
+# Hetu-hub
 
-# Treasurenet
-
-Treasurenet proposes a solution for the critical lack of sustaining and tangible value in the crypto world. Our goal is the combine real world economic drivers and distributed ledger scalability. As a layer 1 protocol, TN will become a model for sustaining value in the fiat world and the digital world.
+Hetu Chain is a scalable, high-throughput blockchain that is fully compatible and interoperable with Ethereum. It's built using the Cosmos SDK and implements Narwhal + Bullshark consensus mechanism for improved performance and scalability.
 
 # tn-services_faucet_fe
 
-> Treasurenet Faucet -- Frontend
+> Hetu-hub Faucet -- Frontend
 
 ### How to start
 
@@ -28,5 +22,5 @@ npm run build # Testnet Environment
 > The production file directory is `dist`
 
 -----
-_treasurenet foundation 2023_
+_hetu-hub foundation 2025_
 
