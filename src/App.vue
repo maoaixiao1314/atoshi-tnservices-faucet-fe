@@ -1,14 +1,14 @@
 <template>
   <div class="app">
     <div class="content">
-      <div class="title">Treasurenet Testnet <span class="text-green">Faucet</span></div>
+      <div class="title">Hetu Testnet <span class="text-green">Faucet</span></div>
       <el-form :model="formData" ref="form" class="form" @validate = "validate">
         <div class="form_content">
           <el-form-item :error="error" prop="account" class="fill form-item"
           :rules="[
             {
               required: true,
-              message: 'Input your treasurenet testnet address or a forwarded link',
+              message: 'Input your hetu-hub testnet address or a forwarded link',
               trigger: 'default'
             },
             {
@@ -31,13 +31,13 @@
     <div class="rule_content">
       <div class="rule_title">Rules:</div>
       <ol>
-        <li class="rule"> You need to connect to Treasurenet Testnet, otherwise UNIT cannot be viewed in MetaMask.</li>
+        <li class="rule"> You need to connect to Hetu Testnet, otherwise HHUB cannot be viewed in MetaMask.</li>
         <li class="rule">
-           Input your treasurenet account to get a login bonus once a day: 5UNIT and 100TAT, claim every 7 consecutive days, the reward is doubled on the 7th day.
+           Input your hetu-hub account to get a login bonus once a day: 1HHUB, claim every 7 consecutive days, the reward is doubled on the 7th da.
         </li>
-        <li class="rule"> Retweet the login bonus information to twitter, and enter the retweeted twitter address to get 5 UNIT and 100 TAT again.</li>
+        <!-- <li class="rule"> Retweet the login bonus information to twitter, and enter the retweeted twitter address to get 5 UNIT and 100 TAT again.</li> -->
         <!-- <li class="rule">
-          Retweet the login bonus information to twitter and follow the <a href="https://twitter.com/treasurenet_io?s=20&t=omYlcXClXYVtJMeTOJh54g" class = "link" target="_blank">treasurenet twitter account</a>, and enter the retweeted twitter address to get 5 UNIT and 100 TAT again.
+          Retweet the login bonus information to twitter and follow the <a href="https://twitter.com/treasurenet_io?s=20&t=omYlcXClXYVtJMeTOJh54g " class = "link" target="_blank">treasurenet twitter account</a>, and enter the retweeted twitter address to get 5 UNIT and 100 TAT again.
         </li> -->
       </ol>
     </div>
@@ -85,13 +85,14 @@
         </Transition>
       </template>
   </el-dialog>
-  <el-dialog v-model="dialogShareVisible" destroy-on-close center width="7.28rem" custom-class="dialog"   :show-close="false">
+  <!--  分享奖励对话框  -->
+  <!-- <el-dialog v-model="dialogShareVisible" destroy-on-close center width="7.28rem" custom-class="dialog"   :show-close="false">
   <template #header="{ close }">
       <div class="my-header">
-        <!-- <el-button type="danger" @click="close">
+        <el-button type="danger" @click="close">
           <el-icon class="el-icon--left"><CircleCloseFilled /></el-icon>
           Close
-        </el-button> -->
+        </el-button>
         <div class="close"  @click="close">
         </div>
       </div>
@@ -106,7 +107,7 @@
         <el-button type="info" class="share_btn" link @click="dialogShareVisible = false">OK</el-button>
       </span>
     </template>
-  </el-dialog>
+  </el-dialog> -->
 </template>
 <script>
 import reCaptcha from '@/components/reCaptcha.vue'
@@ -125,7 +126,7 @@ export default {
       error: '',
       // 0x631F0a288e5F05A26837948Eea559279d734444F
       // txt: 'Connect your wallet'
-      txt: 'Give me UNIT & TAT',
+      txt: 'Give me HHUB',
       dialogVisible: false,
       dialogShareVisible: false,
       timeMenu: [],
@@ -149,7 +150,7 @@ export default {
       this.dialogVisible = false
       window.setTimeout(() => {
         this.pushSignLog()
-        window.open(`https://twitter.com/intent/tweet?text=Requesting%20faucet%20funds%20into%20${this.formData.account}%20on%20the%20%23treasurenet%20test%20network.`)
+        window.open(`https://twitter.com/intent/tweet?text=Requesting%20faucet%20funds%20into%20 ${this.formData.account}%20on%20the%20%23treasurenet%20test%20network.`)
       })
     },
     pushSignLog () {
@@ -256,7 +257,7 @@ export default {
         if (res.data.code === '0') {
           if (res.data.result === 'complete.' || (res.data.result === 'You can only get it once a day!' && today != this.getSignLog())) {
             if (res.data.result === 'complete.') {
-              this.title = `UNIT & TAT have been <br class="mobile_show"/> sent to you!`
+              this.title = `HHUB have been <br class="mobile_show"/> sent to you!`
             } else {
               this.title = `You have already claimed your <br class="mobile_show"/> reward today`
             }
