@@ -1,8 +1,9 @@
 <template>
-  <div ref="grecaptcha"></div>
+  <div>
+  </div>
 </template>
 
-<script>
+<!-- <script>
 export default {
   methods: {
     loaded() {
@@ -42,4 +43,4 @@ export default {
     document.head.appendChild(script)
   },
 }
-</script>
+</script> -->

@@ -113,7 +113,7 @@
 import reCaptcha from '@/components/reCaptcha.vue'
 import axios from 'axios'
 import moment from 'moment'
-const placeholderStr = 'Input your treasurenet testnet address or a forwarded link…'
+const placeholderStr = 'Input your hetu testnet address or a forwarded link…'
 export default {
   name: 'app',
   data () {
