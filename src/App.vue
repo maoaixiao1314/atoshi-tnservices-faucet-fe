@@ -42,7 +42,7 @@
       </ol>
     </div>
   </div>
-  <reCaptcha ref="reCaptcha" @getValidateCode="getValidateCode" v-model="formData.recaptcha"></reCaptcha>
+  <!-- <reCaptcha ref="reCaptcha" @getValidateCode="getValidateCode" v-model="formData.recaptcha"></reCaptcha> -->
   <el-dialog v-model="dialogVisible" center custom-class="sign_dialog"  :show-close="false"
     width="7.28rem">
     <template #header="{ close, titleId, titleClass }">
@@ -57,11 +57,12 @@
       </div>
     </template>
     <Transition name = "el-fade-in-linear" mode = "out-in">
-      <div class="share_content" v-if = "infoLoading">
+      <!-- <div class="share_content" v-if = "infoLoading">
         <img :src="`${giftPC}?${timeStr}`" v-if = "dialogVisible" alt="" class="pc_show share_img"/>
         <img :src="`${giftMobile}?${timeStr}`" v-if = "dialogVisible" alt="" class="mobile_show share_img"/>
-      </div>
-      <div class="timeline" v-else>
+      </div> -->
+      <!-- <div class="timeline" v-else> -->
+        <div class="timeline">
         <template v-for="(item, index) in timeMenu" :key="`time_${index}`">
           <div class="line" :class="{ signed: item.status === 'signed' || item.status === 'doudleSigned', unsign: item.status === 'unsign' || item.status === 'doudleReward' }"
             v-if="index > 0" :key="`time_line_${index}`"></div>
@@ -80,7 +81,7 @@
       <template #footer>
         <Transition name = "el-fade-in-linear" mode = "out-in">
           <span class="dialog-footer"  v-show = "!infoLoading">
-            <el-button type="primary" class="sign_btn" @click="handleSign">Share to get more rewards</el-button>
+            <!-- <el-button type="primary" class="sign_btn" @click="handleSign">Share to get more rewards</el-button> -->
           </span>
         </Transition>
       </template>
@@ -110,7 +111,7 @@
   </el-dialog> -->
 </template>
 <script>
-import reCaptcha from '@/components/reCaptcha.vue'
+// import reCaptcha from '@/components/reCaptcha.vue'
 import axios from 'axios'
 import moment from 'moment'
 const placeholderStr = 'Input your hetu testnet address or a forwarded link…'
@@ -120,7 +121,7 @@ export default {
     return {
       loading: false,
       formData: {
-        recaptcha: '',
+        // recaptcha: '', 
         account: ''
       },
       error: '',
@@ -142,23 +143,23 @@ export default {
       title: ''
     }
   },
-  components: {
-    reCaptcha
-  },
+  // components: {
+  //   reCaptcha
+  // },
   methods: {
-    handleSign () {
-      this.dialogVisible = false
-      window.setTimeout(() => {
-        this.pushSignLog()
-        window.open(`https://twitter.com/intent/tweet?text=Requesting%20faucet%20funds%20into%20 ${this.formData.account}%20on%20the%20%23treasurenet%20test%20network.`)
-      })
-    },
-    pushSignLog () {
-      let signLog = window.localStorage.getItem('signLog') || '{}'
-      signLog = JSON.parse(signLog)
-      signLog[this.formData.account] = moment().format('yyyy-MM-DD')
-      window.localStorage.setItem('signLog', JSON.stringify(signLog))
-    },
+    // handleSign () {
+    //   this.dialogVisible = false
+    //   window.setTimeout(() => {
+    //     this.pushSignLog()
+    //     window.open(`https://twitter.com/intent/tweet?text=Requesting%20faucet%20funds%20into%20 ${this.formData.account}%20on%20the%20%23treasurenet%20test%20network.`)
+    //   })
+    // },
+    // pushSignLog () {
+    //   let signLog = window.localStorage.getItem('signLog') || '{}'
+    //   signLog = JSON.parse(signLog)
+    //   signLog[this.formData.account] = moment().format('yyyy-MM-DD')
+    //   window.localStorage.setItem('signLog', JSON.stringify(signLog))
+    // },
     getSignLog () {
       let signLog = window.localStorage.getItem('signLog') || '{}'
       signLog = JSON.parse(signLog)
@@ -181,7 +182,8 @@ export default {
       this.error = ''
       this.$refs.form.validate(valid => {
         if (valid) {
-          this.$refs.reCaptcha.handle()
+          // this.$refs.reCaptcha.handle()
+          this.submitValidate();
         }
       })
     },
@@ -308,12 +310,12 @@ export default {
       if (this.formData.account.startsWith('https://') || this.formData.account.startsWith('http://')) {
         this.receive().finally(() => {
           this.loading = false
-          this.$refs.reCaptcha.reset()
+          // this.$refs.reCaptcha.reset()
         })
       } else {
         this.getBasicInfo().finally(() => {
           this.loading = false
-          this.$refs.reCaptcha.reset()
+          // this.$refs.reCaptcha.reset()
         })
       }
     }
