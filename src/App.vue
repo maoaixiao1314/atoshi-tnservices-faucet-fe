@@ -33,7 +33,7 @@
       <ol>
         <li class="rule"> You need to connect to Hetu Testnet, otherwise HHUB cannot be viewed in MetaMask.</li>
         <li class="rule">
-           Input your hetu-hub account to get a login bonus once a day: 1HHUB, claim every 7 consecutive days, the reward is doubled on the 7th da.
+          Enter your HeTu Center account and receive login rewards every 4 hours: 5HHUB and 0.3ETH.
         </li>
         <!-- <li class="rule"> Retweet the login bonus information to twitter, and enter the retweeted twitter address to get 5 UNIT and 100 TAT again.</li> -->
         <!-- <li class="rule">
@@ -202,51 +202,114 @@ export default {
         this.timeMenu = this.setTimeRecard(res.data.result.checkIn)
       }
     },
-    setTimeRecard (arr) {
-      let resultArr = []
-      let lastDate = null
-      const today = moment().format('yyyy-MM-DD')
-      for (let i = 0; i< 7; i++) {
-        let title = ''
-        if (arr[i]) {
-          lastDate = moment(new Date(arr[i])).format('yyyy-MM-DD')
-        } else {
-          lastDate = moment(lastDate).add(1, 'd').format('yyyy-MM-DD')
-        }
-        const flag = today === lastDate
-        if (flag) {
-          title = 'Today'
-        } else {
-          title = `Day ${i+1}`
-        }
-        if (arr[i] && i < 6) {
-          resultArr.push({
-            status: 'signed',
-            unit: 5,
-            total: 100,
-            title
-          })
-        } else if (i < 6){
-          resultArr.push({
-            status: 'unsign',
-            title
-          })
-        } else if (arr[i] && i == 6) {
-          resultArr.push({
-            status: 'doudleSigned',
-            unit: 10,
-            total: 200,
-            title
-          })
-        } else {
-          resultArr.push({
-            status: 'doudleReward',
-            title
-          })
-        }
-      }
-      return resultArr
-    },
+    // setTimeRecard (arr) {
+    //   let resultArr = []
+    //   let lastDate = null
+    //   const today = moment().format('yyyy-MM-DD')
+    //   if (arr.length <=6) {
+    //     for (let i = 0; i< arr.length; i++) {
+    //       let title = ''
+    //       if (arr[i]) {
+    //       lastDate = moment(new Date(arr[i])).format('yyyy-MM-DD')
+    //     } 
+    //     const flag = today === lastDate
+    //     if (flag) {
+    //       title = 'Today'
+    //     } else {
+    //       title = `Other Day`
+    //     }
+    //     resultArr.push({
+    //         status: 'signed',
+    //         unit: 1,
+    //         total: 0.4,
+    //         title
+    //       })
+    //     }
+    //   }else{
+    //     for (let i = Math.max(0, arr.length - 6); i < arr.length; i++) {
+    //       let title = ''
+    //       if (arr[i]) {
+    //       lastDate = moment(new Date(arr[i])).format('yyyy-MM-DD')
+    //     }
+    //     const flag = today === lastDate
+    //     if (flag) {
+    //       title = 'Today'
+    //     } else {
+    //       title = `Other Day`
+    //     }
+    //     resultArr.push({
+    //         status: 'signed',
+    //         unit: 1,
+    //         total: 0.4,
+    //         title
+    //       })
+    //     }
+    //   }
+    //   // for (let i = 0; i< 7; i++) {
+    //   //   let title = ''
+    //   //   if (arr[i]) {
+    //   //     lastDate = moment(new Date(arr[i])).format('yyyy-MM-DD')
+    //   //   } else {
+    //   //     lastDate = moment(lastDate).add(1, 'd').format('yyyy-MM-DD')
+    //   //   }
+    //   //   const flag = today === lastDate
+    //   //   if (flag) {
+    //   //     title = 'Today'
+    //   //   } else {
+    //   //     title = `Day ${i+1}`
+    //   //   }
+    //   //   if (arr[i] && i < 6) {
+    //   //     resultArr.push({
+    //   //       status: 'signed',
+    //   //       unit: 5,
+    //   //       total: 100,
+    //   //       title
+    //   //     })
+    //   //   } else if (i < 6){
+    //   //     resultArr.push({
+    //   //       status: 'unsign',
+    //   //       title
+    //   //     })
+    //   //   } else if (arr[i] && i == 6) {
+    //   //     resultArr.push({
+    //   //       status: 'doudleSigned',
+    //   //       unit: 10,
+    //   //       total: 200,
+    //   //       title
+    //   //     })
+    //   //   } else {
+    //   //     resultArr.push({
+    //   //       status: 'doudleReward',
+    //   //       title
+    //   //     })
+    //   //   }
+    //   // }
+    //   return resultArr
+    // },
+setTimeRecard(arr) {
+  const today = moment().format('yyyy-MM-DD'); // 当天的日期
+  const resultArr = []; // 用于存储结果
+  const maxRecords = 6; // 最多显示6条记录
+
+  // 如果数组长度小于等于6，处理整个数组；否则处理最后6条记录
+  const recordsToProcess = arr.length <= maxRecords ? arr : arr.slice(-maxRecords);
+
+  // 遍历需要处理的记录
+  recordsToProcess.forEach(signTime => {
+    const signMoment = moment(new Date(signTime)); // 当前签到时间
+    const lastDate = signMoment.format('yyyy-MM-DD'); // 签到日期
+    const title = today === lastDate ? 'Today' : 'Other Day'; // 判断是否为今天
+
+    resultArr.push({
+      status: 'signed',
+      unit: 1, // 假设每次签到奖励1 UNIT
+      total: 0.4, // 假设每次签到奖励0.4 TAT
+      title
+    });
+  });
+
+  return resultArr;
+},
     async getBasicInfo () {
       try {
         const today = moment().format('yyyy-MM-DD')
@@ -257,7 +320,8 @@ export default {
           timeout: 100000
         })
         if (res.data.code === '0') {
-          if (res.data.result === 'complete.' || (res.data.result === 'You can only get it once a day!' && today != this.getSignLog())) {
+          //           if (res.data.result === 'complete.' || (res.data.result === 'You can only claim it once every four hours!' && today != this.getSignLog())) {
+          if (res.data.result === 'complete.' || (res.data.result === 'You can only claim it once every four hours!')) {
             if (res.data.result === 'complete.') {
               this.title = `HHUB have been <br class="mobile_show"/> sent to you!`
             } else {
