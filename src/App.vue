@@ -302,8 +302,8 @@ setTimeRecard(arr) {
 
     resultArr.push({
       status: 'signed',
-      unit: 1, // 假设每次签到奖励1 UNIT
-      total: 0.4, // 假设每次签到奖励0.4 TAT
+      unit: 5, // 假设每次签到奖励1 UNIT
+      total: 0.3, // 假设每次签到奖励0.3 TAT
       title
     });
   });
