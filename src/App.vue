@@ -1,14 +1,14 @@
 <template>
   <div class="app">
     <div class="content">
-      <div class="title">Hetu Testnet <span class="text-green">Faucet</span></div>
+      <div class="title">Hetu - testnetv1.0.1 <span class="text-green">Faucet</span></div>
       <el-form :model="formData" ref="form" class="form" @validate = "validate">
         <div class="form_content">
           <el-form-item :error="error" prop="account" class="fill form-item"
           :rules="[
             {
               required: true,
-              message: 'Input your hetu-hub testnet address or a forwarded link',
+              message: 'Input your hetu testnet address',
               trigger: 'default'
             },
             {
@@ -31,9 +31,9 @@
     <div class="rule_content">
       <div class="rule_title">Rules:</div>
       <ol>
-        <li class="rule"> You need to connect to Hetu Testnet, otherwise HHUB cannot be viewed in MetaMask.</li>
+        <!-- <li class="rule"> You need to connect to Hetu Testnet, otherwise HETU cannot be viewed in MetaMask.</li> -->
         <li class="rule">
-          Enter your HeTu Center account and receive login rewards every 4 hours: 5HHUB and 0.3ETH.
+          Enter your HeTu Testnet account and receive login rewards every 4 hours: 5HETU and 0.3GAS.
         </li>
         <!-- <li class="rule"> Retweet the login bonus information to twitter, and enter the retweeted twitter address to get 5 UNIT and 100 TAT again.</li> -->
         <!-- <li class="rule">
@@ -68,8 +68,8 @@
             v-if="index > 0" :key="`time_line_${index}`"></div>
           <div class="time_menu" :class="{ signed: item.status === 'signed', unsign: item.status === 'unsign', 'doudle_reward': item.status === 'doudleReward', 'doudle_signed': item.status === 'doudleSigned' }">
             <div class="top" v-if="item.status === 'signed' || item.status === 'doudleSigned'">
-              <div class="unit">+{{ item.unit }} UNIT</div>
-              <div class="tat">+{{ item.total }} TAT</div>
+              <div class="unit">+{{ item.unit }} HETU</div>
+              <div class="tat">+{{ item.total }} GAS</div>
             </div>
             <div class="bottom">
               {{ item.title }}
@@ -127,7 +127,7 @@ export default {
       error: '',
       // 0x631F0a288e5F05A26837948Eea559279d734444F
       // txt: 'Connect your wallet'
-      txt: 'Give me HHUB',
+      txt: 'Give me HETU & GAS',
       dialogVisible: false,
       dialogShareVisible: false,
       timeMenu: [],
@@ -323,7 +323,7 @@ setTimeRecard(arr) {
           //           if (res.data.result === 'complete.' || (res.data.result === 'You can only claim it once every four hours!' && today != this.getSignLog())) {
           if (res.data.result === 'complete.' || (res.data.result === 'You can only claim it once every four hours!')) {
             if (res.data.result === 'complete.') {
-              this.title = `HHUB have been <br class="mobile_show"/> sent to you!`
+              this.title = `HETU have been <br class="mobile_show"/> sent to you!`
             } else {
               this.title = `You have already claimed your <br class="mobile_show"/> reward today`
             }
