@@ -33,7 +33,7 @@
       <ol>
         <!-- <li class="rule"> You need to connect to Hetu Testnet, otherwise HETU cannot be viewed in MetaMask.</li> -->
         <li class="rule">
-          Enter your HeTu Testnet account and receive login rewards every 4 hours: 5HETU and 0.3GAS.
+          Enter your HeTu Testnet account and receive login rewards every 4 hours: 5HETU and 0.3tETH.
         </li>
         <!-- <li class="rule"> Retweet the login bonus information to twitter, and enter the retweeted twitter address to get 5 UNIT and 100 TAT again.</li> -->
         <!-- <li class="rule">
@@ -69,7 +69,7 @@
           <div class="time_menu" :class="{ signed: item.status === 'signed', unsign: item.status === 'unsign', 'doudle_reward': item.status === 'doudleReward', 'doudle_signed': item.status === 'doudleSigned' }">
             <div class="top" v-if="item.status === 'signed' || item.status === 'doudleSigned'">
               <div class="unit">+{{ item.unit }} HETU</div>
-              <div class="tat">+{{ item.total }} GAS</div>
+              <div class="tat">+{{ item.total }} tETH</div>
             </div>
             <div class="bottom">
               {{ item.title }}
@@ -127,7 +127,7 @@ export default {
       error: '',
       // 0x631F0a288e5F05A26837948Eea559279d734444F
       // txt: 'Connect your wallet'
-      txt: 'Give me HETU & GAS',
+      txt: 'Give me HETU & tETH',
       dialogVisible: false,
       dialogShareVisible: false,
       timeMenu: [],
