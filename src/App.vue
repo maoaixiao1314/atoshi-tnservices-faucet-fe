@@ -33,7 +33,7 @@
       <ol>
         <!-- <li class="rule"> You need to connect to Hetu Testnet, otherwise HETU cannot be viewed in MetaMask.</li> -->
         <li class="rule">
-          Enter your HeTu Testnet account and receive login rewards every 4 hours: 5HETU and 0.3tETH.
+          Enter your Hetu Testnet account and receive  test token every 4 hours: 5HETU and 0.3tETH.
         </li>
         <!-- <li class="rule"> Retweet the login bonus information to twitter, and enter the retweeted twitter address to get 5 UNIT and 100 TAT again.</li> -->
         <!-- <li class="rule">
